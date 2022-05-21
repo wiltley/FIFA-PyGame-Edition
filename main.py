@@ -16,6 +16,8 @@ def init_game():
 
 
 
+
+# i think in this loop i will mostly handle the drawing and framerate?
 while(1):
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()

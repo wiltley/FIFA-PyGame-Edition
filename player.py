@@ -7,10 +7,11 @@ class player:
     currently_controlled = None;
 
 
-    def init(self, entity):
+    def __init__(self, entity):
 
         self.currently_controlled = entity
         # entity
+
         pass
 
     # need to figure out what determines them gaining possesion
@@ -26,5 +27,6 @@ class player:
         pass
 
     def boost(self):
-        pass
+        self.speed = 12
+
 

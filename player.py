@@ -13,8 +13,6 @@ class player:
         # entity
         pass
 
-    
-
     # need to figure out what determines them gaining possesion
     def gained_possesion(self):
 
@@ -22,10 +20,11 @@ class player:
         self.speed = 10
 
     def move_around(self):
+
+        # need to directly alter the currentlly controlled entity
+        #still not sure if the ball should be its own entity
         pass
 
     def boost(self):
         pass
-
-
 

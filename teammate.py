@@ -1,18 +1,29 @@
-import player as p
+import player as p, pygame, character as c
 
-class teammate:
+class teammate(c.character):
+
+    entity = pygame.image.load("")
+
+    # not sure if get_rect is the correct thing we want
+    # either way, each player is gonna have a like, an invisible circle under them
+
+    bounds = entity.get_rect()
 
     team_has_pos = False
     position = None
+
     cpu = True
+    entity = None
 
     def __init__(self, position):
         self.position = position
+
 
     def defence(self):
 
         # controls the general logic of where they want to be
         # need to figure out how i want to make them "follow" someone on the other team
+
         if(self.position == "striker"):
 
             # make be the furthest one pushed up
@@ -30,6 +41,7 @@ class teammate:
         if(self.position == "striker"):
             # logic for what a striker not controlled by the computer would do
             pass
+
 
         elif(self.position == "midfielder"):
             pass
@@ -54,9 +66,17 @@ class teammate:
     def stolen(self):
 
         # if cpu managed to steal the ball
-        cpu = False
+        self.cpu = False
 
         # return the entity
+
+    def eval(self, argument):
+        argument()
+
+
+
+
+
 
 
 

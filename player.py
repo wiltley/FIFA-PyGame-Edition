@@ -1,3 +1,4 @@
+
 class player:
 
     has_pos = False;
@@ -9,10 +10,12 @@ class player:
 
     def __init__(self, entity):
 
+
+        
         self.currently_controlled = entity
+
         # entity
 
-        pass
 
     # need to figure out what determines them gaining possesion
     def gained_possesion(self, entity):
@@ -34,7 +37,7 @@ class player:
         elif(input == "s"):
             pass
 
-        elif(input == "d"):
+        elif(input == "a"):
             pass
 
         # need to directly alter the currentlly controlled entity

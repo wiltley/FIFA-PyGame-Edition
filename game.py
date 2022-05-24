@@ -20,8 +20,21 @@ class game:
         for i in range(10):
             self.teammates[i] = t.teammate("striker");
 
+        self.player = p.player(self.teammates[0].entity);
+
+        self.affect_whole_team("argument here")
+
+
 
         # initialize player with striker entitity
+
+    # lmao i have absolutely 0 clue if this will work even a little but 
+    # defo an interesting idea
+    def affect_whole_team(self, argument):
+        for i in self.teammates:
+            self.teammates[i].eval(argument)
+
+
 
 
 

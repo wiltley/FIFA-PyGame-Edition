@@ -1,21 +1,15 @@
+import teammate
 
 class player:
 
     has_pos = False;
     speed = 12;
 
-    # this will be the current entity to manipulate
-    currently_controlled = None;
+    def __init__(self, starter):
 
-
-    def __init__(self, entity):
-
-
-        
-        self.currently_controlled = entity
+        self.currently_controlled = starter
 
         # entity
-
 
     # need to figure out what determines them gaining possesion
     def gained_possesion(self, entity):
@@ -29,7 +23,8 @@ class player:
     def move_around(self, input):
 
         if(input == "w"):
-            pass
+            self.currently_controlled.face_vector = 0
+            self.currently_controlled.move()
 
         elif(input == "a"):
             pass
@@ -46,5 +41,14 @@ class player:
 
     def boost(self):
         self.speed = 12
+
+
+    def switched_controlled(self, new_teammate):
+        self.currently_controlled.cpu = True 
+        self.currently_controlled = new_teammate
+        self.currently_controlled.cpu = False
+
+
+
 
 

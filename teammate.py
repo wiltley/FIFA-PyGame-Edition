@@ -2,22 +2,21 @@ import player as p, pygame, character as c
 
 class teammate(c.character):
 
-    entity = pygame.image.load("")
 
     # not sure if get_rect is the correct thing we want
     # either way, each player is gonna have a like, an invisible circle under them
-
-    bounds = entity.get_rect()
 
     team_has_pos = False
     position = None
 
     cpu = True
-    entity = None
 
-    def __init__(self, position):
-        self.position = position
+    def __init__(self, x_position, y_position, face_vector):
 
+        animations = ["./assets/up4.png", "./assets/up3.png", "./assets/up2.png","./assets/up1.png", "./assets/up0.png"]
+
+        self.entity = pygame.image.load("./assets/up4.png")
+        c.character.__init__(self,x_position, y_position, face_vector, animations)
 
     def defence(self):
 
@@ -70,10 +69,12 @@ class teammate(c.character):
 
         # return the entity
 
-    def eval(self, argument):
-        argument()
+    #def eval(self, argument):
+    #    argument()
 
 
+    def get_entity(self):
+        return self.entity
 
 
 

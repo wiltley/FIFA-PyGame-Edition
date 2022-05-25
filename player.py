@@ -8,6 +8,7 @@ class player:
     def __init__(self, starter):
 
         self.currently_controlled = starter
+        self.moving = False
 
         # entity
 
@@ -24,9 +25,9 @@ class player:
 
         if(input == "w"):
             self.currently_controlled.face_vector = 0
-            self.currently_controlled.move()
+            self.currently_controlled.moving = True
 
-        elif(input == "a"):
+        if(input == "a"):
             pass
 
         elif(input == "s"):

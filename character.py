@@ -1,4 +1,4 @@
-
+import pygame
 
 # both teammate and opp will inherit from this class
 
@@ -42,13 +42,15 @@ class character:
 
     frames_since_last_input = 0
 
-    def __init__(self, x_position, y_position, face_vector, animations):
+    def __init__(self, x_position, y_position, face_vector, animations, entity):
 
         self.x_position = x_position
         self.y_position = y_position
         self.face_vector = face_vector
-
         self.up_a = animations
+        self.entity = entity
+        self.moving = False
+
 
 
     def change_direction(self):
@@ -59,65 +61,67 @@ class character:
         # where i check how many frames have gone by or sum)
         pass
 
+
+
     def move(self):
 
         # make it so that once it passes a certain animation, is running becomes true
         # then the speed increases
-
-        self.animation_frame_manager()
         
-        if self.face_vector == 0:
+        if(self.moving):
+            self.animation_frame_manager()
+             
+            if self.face_vector == 0:
 
-            self.y_velocity = self.speed
-            self.y_position += self.y_velocity
-            self.animation_index
+                self.y_velocity = self.speed
+                self.y_position += self.y_velocity
 
-        elif self.face_vector == 1:
-            self.y_velocity = self.speed
-            self.y_position += self.y_velocity
+            elif self.face_vector == 1:
+                self.y_velocity = self.speed
+                self.y_position += self.y_velocity
 
-            self.x_velocity = self.speed
-            self.x_position += self.x_velocity
+                self.x_velocity = self.speed
+                self.x_position += self.x_velocity
 
-        elif self.face_vector == 2:
-            self.y_velocity = self.speed
-            self.y_position += self.y_velocity
+            elif self.face_vector == 2:
+                self.y_velocity = self.speed
+                self.y_position += self.y_velocity
 
-        elif self.face_vector == 3:
+            elif self.face_vector == 3:
 
-            self.y_velocity = self.speed
-            self.y_position -= self.y_velocity
+                self.y_velocity = self.speed
+                self.y_position -= self.y_velocity
 
-            self.x_velocity = self.speed
-            self.x_position += self.x_velocity
+                self.x_velocity = self.speed
+                self.x_position += self.x_velocity
 
-        elif self.face_vector == 4:
+            elif self.face_vector == 4:
 
-            self.y_velocity = self.speed
-            self.y_position -= self.y_velocity
+                self.y_velocity = self.speed
+                self.y_position -= self.y_velocity
 
-        elif self.face_vector == 5:
+            elif self.face_vector == 5:
 
-            self.y_velocity = self.speed
-            self.y_position -= self.y_velocity
+                self.y_velocity = self.speed
+                self.y_position -= self.y_velocity
 
-            self.x_velocity = self.speed
-            self.x_position -= self.x_velocity
+                self.x_velocity = self.speed
+                self.x_position -= self.x_velocity
 
-        elif self.face_vector == 6:
+            elif self.face_vector == 6:
 
-            self.x_velocity = self.speed
-            self.x_position -= self.x_velocity
+                self.x_velocity = self.speed
+                self.x_position -= self.x_velocity
 
-        elif self.face_vector == 7:
+            elif self.face_vector == 7:
 
-            self.y_velocity = self.speed
-            self.y_position += self.y_velocity
-            
-            self.x_velocity = self.speed
-            self.x_position -= self.x_velocity
+                self.y_velocity = self.speed
+                self.y_position += self.y_velocity
+                
+                self.x_velocity = self.speed
+                self.x_position -= self.x_velocity
         
-        self.check_if_running()
+            self.check_if_running()
 
     # implement something which checks if they currently have possesion of the ball
     def check_if_running(self):
@@ -130,8 +134,10 @@ class character:
 
         self.animation_index+=1
 
-        if(self.animation_index == 8):
+        if(self.animation_index == 4):
             self.animation_index = 0
+
+        self.entity = pygame.image.load(self.up_a[self.animation_index])
 
         # what to do in case
 

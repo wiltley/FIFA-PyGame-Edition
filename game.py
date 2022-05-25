@@ -37,6 +37,12 @@ class game:
     def get_player(self):
         return self.player
 
+    def update(self):
+
+        self.player.currently_controlled.move()
+        # this will update everything
+
+
 
 
 

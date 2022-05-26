@@ -13,10 +13,12 @@ class teammate(c.character):
 
     def __init__(self, x_position, y_position, face_vector):
 
-        animations = ["./assets/up4.png", "./assets/up3.png", "./assets/up2.png","./assets/up1.png", "./assets/up0.png"]
+        animations = [["./assets/up4.png", "./assets/up3.png", "./assets/up2.png","./assets/up1.png", "./assets/up0.png"],[],[],[],
+                ["./assets/down4.png", "./assets/down3.png", "./assets/down2.png","./assets/down1.png", "./assets/down0.png"]]
 
         self.entity = pygame.image.load("./assets/up4.png")
-        c.character.__init__(self,x_position, y_position, face_vector, animations,self.entity)
+        self.entity_rect = self.entity.get_rect()
+        c.character.__init__(self,x_position, y_position, face_vector, animations,self.entity,self.entity_rect)
 
     def defence(self):
 

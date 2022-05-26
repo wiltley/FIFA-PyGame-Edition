@@ -25,6 +25,8 @@ class character:
     face_vector = 0
 
     # animations
+    
+    animations = []
 
     up_left_a = [] # fv 0
     up_a = []   # fv 1
@@ -42,15 +44,15 @@ class character:
 
     frames_since_last_input = 0
 
-    def __init__(self, x_position, y_position, face_vector, animations, entity):
+    def __init__(self, x_position, y_position, face_vector, animations, entity, entity_rect):
 
         self.x_position = x_position
         self.y_position = y_position
         self.face_vector = face_vector
-        self.up_a = animations
+        self.animations = animations
         self.entity = entity
+        self.entity_rect = entity_rect
         self.moving = False
-
 
 
     def change_direction(self):
@@ -61,18 +63,14 @@ class character:
         # where i check how many frames have gone by or sum)
         pass
 
-
-
     def move(self):
-
         # make it so that once it passes a certain animation, is running becomes true
         # then the speed increases
-        
-        if(self.moving):
-            self.animation_frame_manager()
-             
-            if self.face_vector == 0:
 
+        if (self.moving): 
+            self.animation_frame_manager()
+
+            if self.face_vector == 0:
                 self.y_velocity = self.speed
                 self.y_position += self.y_velocity
 
@@ -120,8 +118,12 @@ class character:
                 
                 self.x_velocity = self.speed
                 self.x_position -= self.x_velocity
-        
-            self.check_if_running()
+        else:
+            self.entity = pygame.image.load(self.animations[self.face_vector][0])
+
+
+            
+        self.check_if_running()
 
     # implement something which checks if they currently have possesion of the ball
     def check_if_running(self):
@@ -137,13 +139,9 @@ class character:
         if(self.animation_index == 4):
             self.animation_index = 0
 
-        self.entity = pygame.image.load(self.up_a[self.animation_index])
+        if(self.face_vector == 0):
+            self.entity = pygame.image.load(self.animations[0][self.animation_index])
 
-        # what to do in case
-
-
-
-
-
-
+        if(self.face_vector ==4):
+            self.entity = pygame.image.load(self.animations[4][self.animation_index])
 

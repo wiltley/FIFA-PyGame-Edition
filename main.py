@@ -35,16 +35,21 @@ while(1):
         if event.type == pygame.QUIT: sys.exit()
 
         if event.type == pygame.KEYDOWN:
-            if event.key == ord("w"):
+            if event.key == pygame.K_w:
                 player.move_around("w") 
+            if (event.key == pygame.K_s):
+                player.move_around("s") 
         if event.type == pygame.KEYUP:
-            if event.key == ord("w"):
-                pass
+            if event.key == pygame.K_w or event.key == pygame.K_s:
+                # this code right here will have to be rewritten
+                # because the true case is when either were at a bound
+                # or wasd arent being held
+                player.stop_movement()
 
         g.update()
 
     player_entity = player.currently_controlled.entity
-    player_rect = player_entity.get_rect()
+    player_rect = player.currently_controlled.entity_rect
     screen.fill(black)
     screen.blit(player_entity, player_rect)
     pygame.display.flip()

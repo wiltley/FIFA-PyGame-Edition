@@ -31,7 +31,8 @@ class player:
             pass
 
         elif(input == "s"):
-            pass
+            self.currently_controlled.face_vector = 4
+            self.currently_controlled.moving = True
 
         elif(input == "a"):
             pass
@@ -39,6 +40,9 @@ class player:
         # need to directly alter the currentlly controlled entity
         #still not sure if the ball should be its own entity
         pass
+
+    def stop_movement(self):
+        self.currently_controlled.moving = False
 
     def boost(self):
         self.speed = 12

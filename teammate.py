@@ -1,4 +1,4 @@
-import player as p, pygame, character as c
+import player as p, pygame, character as c, game as g
 
 class teammate(c.character):
 
@@ -7,47 +7,48 @@ class teammate(c.character):
     # either way, each player is gonna have a like, an invisible circle under them
 
     team_has_pos = False
-    position = None
+    role = None
 
     cpu = True
 
-    def __init__(self, x_position, y_position, face_vector):
+    def __init__(self, pos, face_vector):
 
         animations = [["./assets/up4.png", "./assets/up3.png", "./assets/up2.png","./assets/up1.png", "./assets/up0.png"],[],[],[],
                 ["./assets/down4.png", "./assets/down3.png", "./assets/down2.png","./assets/down1.png", "./assets/down0.png"]]
 
         self.entity = pygame.image.load("./assets/up4.png")
         self.entity_rect = self.entity.get_rect()
-        c.character.__init__(self,x_position, y_position, face_vector, animations,self.entity,self.entity_rect)
+        c.character.__init__(self, pos, face_vector, animations,self.entity,self.entity_rect)
+        self.goal_side = "right"
 
     def defence(self):
 
         # controls the general logic of where they want to be
         # need to figure out how i want to make them "follow" someone on the other team
 
-        if(self.position == "striker"):
+        if(self.role == "striker"):
 
             # make be the furthest one pushed up
             pass
 
-        elif(self.position == "midfielder"):
+        elif(self.role == "midfielder"):
             pass
 
-        elif(self.position == "defender"):
+        elif(self.role == "defender"):
             pass
 
 
     def offense(self):
 
-        if(self.position == "striker"):
+        if(self.role == "striker"):
             # logic for what a striker not controlled by the computer would do
             pass
 
 
-        elif(self.position == "midfielder"):
+        elif(self.role == "midfielder"):
             pass
 
-        elif(self.position == "defender"):
+        elif(self.role == "defender"):
 
             pass
 

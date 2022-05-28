@@ -9,7 +9,7 @@ screen = pygame.display.set_mode()
 entities = []
 score = 0
 
-black = 0,0,0
+black = 0,100,0
 
 clock = pygame.time.Clock()
 
@@ -22,7 +22,7 @@ def init_game():
     pass
 
 g = game.game()
-player = g.get_player()
+player = g.player
 player_entity = player.currently_controlled.entity
 player_rect = player_entity.get_rect()
 

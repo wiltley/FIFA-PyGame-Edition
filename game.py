@@ -1,21 +1,22 @@
 
-import teammate as t, opp as o, player as p
+import teammate as t, opp as o, player as p, ball as b
 
 # class that will control most of the game logic
 class game:
 
     current_possession = None
-    current_ball_loc = None
 
     def __init__(self):
         # i guess we declare a new game in here? the official score would be kept in main?
+
+        self.ball = b.ball(200,200)
 
         self.teammates = []
         self.opposition = []
 
 
         for i in range(10):
-            self.teammates.append(t.teammate(100,200, 0));
+            self.teammates.append(t.teammate([100,200], 0));
 
         self.player = p.player(self.teammates[0]);
 
@@ -34,8 +35,36 @@ class game:
 
         pass
 
-    def get_player(self):
-        return self.player
+
+    def switch_to(self):
+        # when the space key is hit, it should change the player to the optimal defender
+        # should also automatically switch to whoever  your team passed to
+
+        # later on add sum that accounts for a "side switch"
+
+        if(self.teammates[0].goal_side == "right"):
+            #initialize accordingly
+            pass
+
+        # stuff here will be changed to variables eventually
+
+
+    """
+    HEAVY WORK IN PROGRESS FUNCTION, SOURCE FOR BREAKAGE
+    """
+    def find_best_defender(self):
+        search = []
+        for t in self.teammates:
+            # this line should be determined a diff way, based on the direction being defended 
+            if t.pos[0] > self.ball.pos[0]:
+                search.append(t)
+
+        # quicksort based off of their distance from the ball
+        for o in search:
+            pass
+            # we will sort them by distance, above the player will have a hotkey to indicate which to switch to 
+
+            pass
 
     def update(self):
 
